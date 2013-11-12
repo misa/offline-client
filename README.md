@@ -58,7 +58,7 @@ list of available products
 
 
 ## Suggested technology
-* HTML5 with local storage
+* HTML5 with local storage or IndexedDB
 * JSON API (http://jsonapi.org/) for REST communication
 * Bootstrap or Foundations for formatting
 * JavaScript: AngularJS, Ember, jQuery... use wisely
