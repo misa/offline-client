@@ -1,0 +1,45 @@
+{
+  "products": [{
+    "href": "https://sis.silesnet.net/api/v1/index.php/products/1",
+    "id": 1,
+    "name": "WIRELESSmax",
+    "download": 10,
+    "upload": 5,
+    "price": 360
+  }, {
+    "href": "https://sis.silesnet.net/api/v1/index.php/products/2",
+    "id": 2,
+    "name": "WIRELESSmax",
+    "download": 20,
+    "upload": 10,
+    "price": 410
+  }, {
+    "href": "https://sis.silesnet.net/api/v1/index.php/products/3",
+    "id": 3,
+    "name": "LANaccess",
+    "download": 10,
+    "upload": 5,
+    "price": 260
+  }, {
+    "href": "https://sis.silesnet.net/api/v1/index.php/products/4",
+    "id": 4,
+    "name": "LANaccess",
+    "download": 20,
+    "upload": 10,
+    "price": 310
+  }, {
+    "href": "https://sis.silesnet.net/api/v1/index.php/products/5",
+    "id": 5,
+    "name": "LANfiber",
+    "download": 50,
+    "upload": 50,
+    "price": 260
+  }, {
+    "href": "https://sis.silesnet.net/api/v1/index.php/products/6",
+    "id": 6,
+    "name": "LANfiber",
+    "download": 100,
+    "upload": 100,
+    "price": 310
+  }]
+}
