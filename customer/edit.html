@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html manifest="/silesnet.manifest">
+    <head>
+        <title>Customer edit - Silesnet</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="HandheldFriendly" content="true" />
+        <link href="/media/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/media/css/display.css" rel="stylesheet">
+    </head>
+    <body>
+
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/index.html">Silesnet</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+
+            <div class="starter-template">
+                <h1>New customer</h1>
+
+                <div class="row">
+
+                    <form role="form" class="col-xs-12 col-sm-8 col-md-5 col-lg-5">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-xs-6"><label for="name">Customer name</label></div>
+                                <div class="col-xs-6"><label for="supplementary_name">Firm name</label></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6"><input type="text" name="name" class="form-control col-md-5" id="name" required="required" placeholder="Full name"></div>
+                                <div class="col-xs-6"><input type="text" name="supplementary_name" class="form-control col-md-5" id="supplementary_name" placeholder="Firm name"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-xs-6"><label for="public_id">Public ID</label></div>
+                                <div class="col-xs-6"><label for="dic">DIC</label></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6"><input type="text" name="public_id" class="form-control col-md-5" id="public_id" required="required" placeholder="Public ID"></div>
+                                <div class="col-xs-6"><input type="text" name="dic" class="form-control col-md-5" id="dic" placeholder="DIC"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" name="email" class="form-control" id="email" required="required" placeholder="E-mail">
+                        </div>
+                        <div class="form-group">
+                            <label for="street">Street</label>
+                            <input type="text" name="street" class="form-control" id="street" required="required" placeholder="Street">
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-xs-7"><label for="city">City</label></div>
+                                <div class="col-xs-5"><label for="postal_code">Postal code</label></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-7"><input type="text" name="city" class="form-control col-md-5" id="city" required="required" placeholder="City"></div>
+                                <div class="col-xs-5"><input type="number" name="postal_code" class="form-control col-md-5" id="postal_code" required="required" placeholder="Postal code"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="country">Country</label>
+                            <select name="country" class="form-control" id="country">
+                                <option>Czech republic</option>
+                                <option>Poland</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-xs-6"><label for="contact_name">Contact name</label></div>
+                                <div class="col-xs-6"><label for="phone">Phone</label></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6"><input type="text" name="contact_name" class="form-control col-md-5" id="contact_name" placeholder="Contact name"></div>
+                                <div class="col-xs-6"><input type="text" name="phone" class="form-control col-md-5" id="phone" placeholder="Phone"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="info">Info</label>
+                            <textarea name="info" id="info" class="form-control" placeholder="Aditional informations"></textarea>
+                        </div>
+
+                        <h3>Services</h3>
+                        <div class="form-group" style="padding-bottom: 15px;">
+                            <div class="row">
+                                <div class="col-xs-7" style="margin-bottom: 15px;">
+                                    <select name="service_location" class="form-control" id="service_id">
+                                        <option>17listopadu1209</option>
+                                        <option>28rijna42</option>
+                                        <option>akatova12</option>
+                                        <option>akatova13</option>
+                                        <option>albrechtice</option>
+                                        <option>alejmiru801</option>
+                                        <option>alejmiru806</option>
+                                        <option>andziolowka</option>
+                                        <option>antonicek</option>
+                                        <option>auxova</option>
+                                        <option>bachrata</option>
+                                        <option>balicky</option>
+                                        <option>balzacova1192</option>
+                                        <option>barabosz-ap2</option>
+                                    </select>
+                                </div>
+                                <div class="col-xs-5">
+                                    <input type="number" name="service_contract" class="form-control col-md-1" id="service_contract" placeholder="Contract">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-9">
+                                    <select name="service_type" class="form-control" id="service_type">
+                                        <option>WIRELESSmax (10 / 5) 360 Kč</option>
+                                        <option>WIRELESSmax (20 / 10) 410 Kč</option>
+                                    </select>
+                                </div>
+                                <div class="col-xs-3">
+                                    <a href="#" class="btn btn-warning pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" style="padding-bottom: 15px;">
+                            <a href="#" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span> service</a>
+                        </div>
+
+                        <button type="submit" class="btn btn-lg btn-success pull-right">Save</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+        <script src="/media/js/jquery.min.js"></script>
+        <script src="/media/js/bootstrap.min.js"></script>
+        <script src="/media/js/script.js"></script>
+    </body>
+</html>

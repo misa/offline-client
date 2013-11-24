@@ -1,0 +1,41 @@
+/**
+ *  Author: Bc. Michal Kocián
+ */
+body {
+  padding-top: 50px;
+}
+.starter-template {
+  padding: 15px 15px;
+  text-align: left;
+}
+.navbar {
+    background-color: #443374;
+}
+.navbar-brand {
+    color: #fff !important;
+}
+h1 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    padding-bottom: 14px;
+}
+.two-inputs {
+    width: 45%;
+}
+.two-inputs:last-child {
+    float: left;
+}
+
+.customer-list td.number {
+    width: 50px;
+}
+span.required {
+    font-weight: bold;
+}
+
+.service {
+    padding-bottom: 15px;
+}
+.service .service_place {
+    padding-bottom: 15px;
+}
