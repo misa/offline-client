@@ -1,0 +1,21 @@
+CACHE MANIFEST
+# Silesnet - Supporting application for service personnel
+#
+# version 0.0.1
+# 
+/index.html
+/customer/edit.html
+/customer/detail.html
+/media/css/display.css
+/media/css/bootstrap.min.css
+/media/css/bootstrap-theme.min.css
+/media/fonts/glyphicons-halflings-regular.eot
+/media/fonts/glyphicons-halflings-regular.svg
+/media/fonts/glyphicons-halflings-regular.ttf
+/media/fonts/glyphicons-halflings-regular.woff
+/media/js/jquery.min.js
+/media/js/script.js
+FALLBACK:
+/ /customer/offline.html
+NETWORK:
+* 
