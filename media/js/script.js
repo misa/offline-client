@@ -1,8 +1,12 @@
-/** 
+/**
  * @author Bc. Michal Kocián
  */
+$(document).ready(function() {
 
-$(function() {
-    
-    // TODO
+    // Check for Product and Region selects
+    if ($('#region').length == 1 && $('#product').length == 1) {
+
+        // Init select values
+        init_selects();
+    }
 });

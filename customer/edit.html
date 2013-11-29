@@ -90,21 +90,7 @@
                         <div class="form-group" style="padding-bottom: 15px;">
                             <div class="row">
                                 <div class="col-xs-7" style="margin-bottom: 15px;">
-                                    <select name="service_location" class="form-control" id="service_id">
-                                        <option>17listopadu1209</option>
-                                        <option>28rijna42</option>
-                                        <option>akatova12</option>
-                                        <option>akatova13</option>
-                                        <option>albrechtice</option>
-                                        <option>alejmiru801</option>
-                                        <option>alejmiru806</option>
-                                        <option>andziolowka</option>
-                                        <option>antonicek</option>
-                                        <option>auxova</option>
-                                        <option>bachrata</option>
-                                        <option>balicky</option>
-                                        <option>balzacova1192</option>
-                                        <option>barabosz-ap2</option>
+                                    <select name="region" class="form-control" id="region">
                                     </select>
                                 </div>
                                 <div class="col-xs-5">
@@ -114,9 +100,7 @@
 
                             <div class="row">
                                 <div class="col-xs-9">
-                                    <select name="service_type" class="form-control" id="service_type">
-                                        <option>WIRELESSmax (10 / 5) 360 Kč</option>
-                                        <option>WIRELESSmax (20 / 10) 410 Kč</option>
+                                    <select name="product" class="form-control" id="product">
                                     </select>
                                 </div>
                                 <div class="col-xs-3">
@@ -125,10 +109,10 @@
                             </div>
                         </div>
                         <div class="form-group" style="padding-bottom: 15px;">
-                            <a href="#" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span> service</a>
+                            <a href="#" class=" btn-save-customer btn btn-info"><span class="glyphicon glyphicon-plus"></span> service</a>
                         </div>
 
-                        <button type="submit" class="btn btn-lg btn-success pull-right">Save</button>
+                        <input type="submit" class="btn-save-customer btn btn-lg btn-success pull-right" value="Save" />
                     </form>
                 </div>
             </div>
@@ -137,6 +121,7 @@
 
         <script src="/media/js/jquery.min.js"></script>
         <script src="/media/js/bootstrap.min.js"></script>
+        <script src="/media/js/db.js"></script>
         <script src="/media/js/script.js"></script>
     </body>
 </html>

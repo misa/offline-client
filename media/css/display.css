@@ -39,3 +39,9 @@ span.required {
 .service .service_place {
     padding-bottom: 15px;
 }
+
+.customer-list li {
+    padding: 13px;
+    
+    border-bottom: 1px solid silver;
+}
