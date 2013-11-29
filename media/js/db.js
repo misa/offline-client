@@ -2,6 +2,16 @@
  * @author Bc. Michal Kocián
  */
 var silesnet = {};
+
+silesnet.config = {
+    db_version : 1,
+    db_name : "silesnet",
+    url_regions : "/data/regions.json",
+    url_products : "/data/products.json",
+    time_cache_regions : 86400,
+    time_cache_products : 86400
+};
+
 silesnet.indexedDB = {};
 
 silesnet.indexedDB.db = null;
@@ -10,11 +20,8 @@ silesnet.indexedDB.db = null;
  */
 silesnet.indexedDB.open = function() {
 
-    var version = 1;
-    var dbName = "silesnet";
-
     // Open database
-    var request = indexedDB.open(dbName, version);
+    var request = indexedDB.open(silesnet.config.db_name, silesnet.config.db_version);
 
     // We can only create Object stores in a versionchange transaction
     request.onupgradeneeded = function(e) {
@@ -101,7 +108,7 @@ var regions = {
     checkTimestam: function() {
 
         // Compare saved timestamp
-        if (localStorage.timeRegions == null || (parseInt(localStorage.timeRegions) + 86400 * 1000) < (new Date().getTime())) {
+        if (localStorage.timeRegions == null || (parseInt(localStorage.timeRegions) + silesnet.config.time_cache_regions * 1000) < (new Date().getTime())) {
 
             // Timestamp outdated
             return true;
@@ -116,7 +123,7 @@ var regions = {
     loadData: function() {
 
         // Load JSON data
-        $.getJSON("/data/regions.json", function() {
+        $.getJSON(silesnet.config.url_regions, function() {
         })
                 .done(function(data) {
 
@@ -195,7 +202,7 @@ var products = {
     checkTimestam: function() {
 
         // Compare saved timestamp
-        if (localStorage.timeProducts == null || (parseInt(localStorage.timeProducts) + 86400 * 1000) < (new Date().getTime())) {
+        if (localStorage.timeProducts == null || (parseInt(localStorage.timeProducts) + silesnet.config.time_cache_products * 1000) < (new Date().getTime())) {
 
             // Timestamp outdated
             return true;
@@ -210,7 +217,7 @@ var products = {
     loadData: function() {
 
         // Load JSON data
-        $.getJSON("/data/products.json", function() {
+        $.getJSON(silesnet.config.url_products, function() {
         })
                 .done(function(data) {
 
