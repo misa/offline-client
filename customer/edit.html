@@ -47,8 +47,14 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="email">E-mail</label>
-                            <input type="email" name="email" class="form-control" id="email" required="required" placeholder="E-mail">
+                            <div class="row">
+                                <div class="col-xs-4"><label for="contract_no">Contract ID</label></div>
+                                <div class="col-xs-8"><label for="email">E-mail</label></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-4"><input type="number" name="contract_no" class="form-control col-md-5" id="contract_no" required="required" placeholder="Contract" /></div>
+                                <div class="col-xs-8"><input type="email" name="email" class="form-control" id="email" required="required" placeholder="E-mail" /></div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="street">Street</label>
@@ -94,7 +100,7 @@
                                     </select>
                                 </div>
                                 <div class="col-xs-5">
-                                    <input type="number" name="service_contract" class="form-control col-md-1" id="service_contract" placeholder="Contract">
+                                    <input type="date" name="period_from" class="form-control col-md-1" id="period_from" />
                                 </div>
                             </div>
 
