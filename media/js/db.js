@@ -411,6 +411,16 @@ silesnet.customers = {
         };
 
         requestCust.onerror = silesnet.indexedDB.onerror;
+    },
+    delCustomer: function(key) {
+
+        // Init database
+        var db = silesnet.indexedDB.db;
+        var trans = db.transaction(["customers"], "readwrite");
+        var store = trans.objectStore("customers");
+
+        // Delete customer
+        store.delete(parseInt(key));
     }
  };
 

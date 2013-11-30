@@ -31,4 +31,7 @@ $(document).ready(function() {
         return '\index.html';
     });
 
+    $('.btn-customer-delete').on('click', function (event) {
+        silesnet.customers.delCustomer(getQueryStringParams('key'));
+    });
 });
