@@ -89,6 +89,11 @@ silesnet.indexedDB.open = function() {
         if ($('.customer-list').length == 1) {
             silesnet.customers.getAllCustomers();
         }
+
+        // Init customer detail
+        if ($('.customer-detail').length == 1) {
+            silesnet.customers.getDetailCustomer(getQueryStringParams('key'));
+        }
     };
 
     request.onerror = function(e) {
@@ -364,6 +369,67 @@ silesnet.customers = {
         };
 
         cursorRequest.onerror = silesnet.indexedDB.onerror;
+    },
+    getDetailCustomer: function(key) {
+
+        // Init database
+        var db = silesnet.indexedDB.db;
+        var trans = db.transaction(["customers"], "readwrite");
+        var store = trans.objectStore("customers");
+
+        // Get customer details
+        var requestCust = store.get(parseInt(key));
+
+        requestCust.onsuccess = function(e) {
+
+            var result = e.target.result;
+
+            // Set values on page
+            $('#name').html(result.name);
+            $('#supplementary_name').html(result.supplementary_name);
+            $('#public_id').html(result.public_id);
+            $('#dic').html(result.dic);
+            $('#contract_no').html(result.contract_no);
+            $('#email').html(result.email);
+            $('#street').html(result.street);
+            $('#city').html(result.city);
+            $('#postal_code').html(result.postal_code);
+            switch (parseInt(result.country))
+            {
+                case 1:
+                    $('#country').html('Czech republic');
+                    break;
+                case 2:
+                    $('#country').html('Poland');
+                    break;
+                default:
+                    $('#country').html('Czech republic');
+            }
+            $('#contact_name').html(result.contact_name);
+            $('#phone').html(result.phone);
+            $('#info').html(result.info);
+        };
+
+        requestCust.onerror = silesnet.indexedDB.onerror;
     }
  };
 
+/**
+ * Get URL query parameter value
+ *
+ * @param string sParam Patameter name
+ * @returns string
+ */
+function getQueryStringParams(sParam)
+{
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&');
+    for (var i = 0; i < sURLVariables.length; i++)
+    {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam)
+        {
+            return sParameterName[1];
+        }
+    }
+}
