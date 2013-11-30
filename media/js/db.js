@@ -178,7 +178,7 @@ var regions = {
 
             var selectRegion = document.getElementById('region');
             var selectOption = document.createElement("option");
-            selectOption.setAttribute('id', result.value.key);
+            selectOption.setAttribute('value', result.value.key);
             selectOption.appendChild(document.createTextNode(result.value.name));
 
             selectRegion.appendChild(selectOption);
@@ -275,7 +275,7 @@ var products = {
             // Append Options to Select
             var selectProduct = document.getElementById('product');
             var selectOption = document.createElement("option");
-            selectOption.setAttribute('id', result.value.key);
+            selectOption.setAttribute('value', result.value.key);
             selectOption.appendChild(document.createTextNode(result.value.name + ' (' + result.value.download + ' / ' + result.value.upload + ') ' + result.value.price + ' Kč'));
 
             selectProduct.appendChild(selectOption);
@@ -286,3 +286,47 @@ var products = {
         cursorRequest.onerror = silesnet.indexedDB.onerror;
     }
 };
+
+/**
+ * Customers object
+ */
+silesnet.customers = {
+    /**
+     * Save a new customer to database
+     */
+    addCustomer : function(data) {
+
+        // Init database
+        var db = silesnet.indexedDB.db;
+        var trans = db.transaction(["customers"], "readwrite");
+        var store = trans.objectStore("customers");
+
+        // Put values into database
+        var request = store.put({
+            "key": (new Date()).getTime(),
+            "name": data.name,
+            "supplementary_name": data.supplementary_name,
+            "public_id": data.public_id,
+            "dic": data.dic,
+            "contract_no": data.contract_no,
+            "email": data.email,
+            "street": data.street,
+            "city": data.city,
+            "postal_code": data.postal_code,
+            "country": data.country,
+            "contact_name": data.contact_name,
+            "phone": data.phone,
+            "info": data.info,
+            "region": data.region,
+            "period_from": data.period_from,
+            "product": data.product
+        });
+
+        request.onsuccess = function(e) {
+        };
+
+        request.onerror = function(e) {
+            console.log('Error - save Customer');
+        };
+    }
+ };
