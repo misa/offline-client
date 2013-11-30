@@ -76,10 +76,19 @@ silesnet.indexedDB.open = function() {
         }
 
         // Init regions
-        regions.getAllRegions();
+        if ($('#region').length == 1) {
+            regions.getAllRegions();
+        }
 
         // Init products
-        products.getAllProducts();
+        if ($('#product').length == 1) {
+            products.getAllProducts();
+        }
+
+        // Init customers list
+        if ($('.customer-list').length == 1) {
+            silesnet.customers.getAllCustomers();
+        }
     };
 
     request.onerror = function(e) {
@@ -90,7 +99,7 @@ silesnet.indexedDB.open = function() {
 /**
  * Init select boxes - regions and products
  */
-function init_selects() {
+function init_data() {
 
     // Open indexDB database
     silesnet.indexedDB.open();
@@ -328,5 +337,33 @@ silesnet.customers = {
         request.onerror = function(e) {
             console.log('Error - save Customer');
         };
+    },
+    getAllCustomers: function() {
+
+        // Init database
+        var db = silesnet.indexedDB.db;
+        var trans = db.transaction(["customers"], "readwrite");
+        var store = trans.objectStore("customers");
+
+        // Get everything in the store;
+        var keyRange = IDBKeyRange.lowerBound(0);
+        var cursorRequest = store.openCursor(keyRange);
+
+        var i = 1;
+
+        cursorRequest.onsuccess = function(e) {
+            var result = e.target.result;
+
+            if (result == null)
+                return;
+
+            // Append row to table
+            $('.customer-list').append("<tr><td class='number'>" + i++ + "</td><td><a href='/customer/detail.html?key=" + result.value.key + "'>" + result.value.name + "</a></td></tr>");
+
+            result.continue();
+        };
+
+        cursorRequest.onerror = silesnet.indexedDB.onerror;
     }
  };
+
