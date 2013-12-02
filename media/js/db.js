@@ -90,16 +90,28 @@ silesnet.indexedDB.open = function() {
             silesnet.customers.getAllCustomers();
         }
 
+        // Init customer edit
+        if ($('.customer-edit').length == 1) {
+
+            if (sessionStorage.getItem('keyCustomer') != null) {
+                // Set customer ID to 'data' attribute
+                $('#name').attr('data-customer-key', sessionStorage.getItem('keyCustomer'));
+
+                // Init saved customer values
+                silesnet.customers.initCustomerForm(sessionStorage.getItem('keyCustomer'));
+            }
+        }
+
         // Init customer detail
         if ($('.customer-detail').length == 1) {
-            silesnet.customers.getDetailCustomer(sessionStorage.keyCustomer);
+            silesnet.customers.getDetailCustomer(sessionStorage.getItem('keyCustomer'));
 
             // Set customer ID to 'data' attribute
-            $('#name').attr('data-customer-key', sessionStorage.keyCustomer);
-
-            // Clean up
-            sessionStorage.removeItem('keyCustomer');
+            $('#name').attr('data-customer-key', sessionStorage.getItem('keyCustomer'));
         }
+
+        // Clean up temporary variable
+        sessionStorage.removeItem('keyCustomer');
     };
 
     request.onerror = function(e) {
@@ -414,6 +426,38 @@ silesnet.customers = {
             $('#contact_name').html(result.contact_name);
             $('#phone').html(result.phone);
             $('#info').html(result.info);
+        };
+
+        requestCust.onerror = silesnet.indexedDB.onerror;
+    },
+    initCustomerForm: function(key) {
+
+        // Init database
+        var db = silesnet.indexedDB.db;
+        var trans = db.transaction(["customers"], "readwrite");
+        var store = trans.objectStore("customers");
+
+        // Get customer details
+        var requestCust = store.get(parseInt(key));
+
+        requestCust.onsuccess = function(e) {
+
+            var result = e.target.result;
+
+            // Set values on page
+            $('#name').val(result.name);
+            $('#supplementary_name').val(result.supplementary_name);
+            $('#public_id').val(result.public_id);
+            $('#dic').val(result.dic);
+            $('#contract_no').val(result.contract_no);
+            $('#email').val(result.email);
+            $('#street').val(result.street);
+            $('#city').val(result.city);
+            $('#postal_code').val(result.postal_code);
+            $('#country option[value=' + result.country +']').prop('selected', true);
+            $('#contact_name').val(result.contact_name);
+            $('#phone').val(result.phone);
+            $('#info').val(result.info);
         };
 
         requestCust.onerror = silesnet.indexedDB.onerror;

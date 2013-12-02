@@ -28,11 +28,21 @@ $(document).ready(function() {
         // Add a customer
         silesnet.customers.addCustomer(data);
 
+        // Delete old customer if exists
+        if ($('[data-customer-key]').attr('data-customer-key') != null) {
+            silesnet.customers.delCustomer($('[data-customer-key]').attr('data-customer-key'));
+        }
+
         return '\index.html';
     });
 
     $('.btn-customer-delete').on('click', function(event) {
-        silesnet.customers.delCustomer(getQueryStringParams('key'));
+        silesnet.customers.delCustomer($('[data-customer-key]').attr('data-customer-key'));
+    });
+
+    $('.btn-customer-edit').on('click', function(event) {
+        // Save customer key to session storage
+        sessionStorage.setItem('keyCustomer', $('[data-customer-key]').attr('data-customer-key'));
     });
 
     /**
@@ -41,6 +51,6 @@ $(document).ready(function() {
     $(document).on('click', '.customer-list tr', function(event) {
 
         // Save customer key to session storage
-        sessionStorage.keyCustomer = $(this).find('a[data-customer-key]').attr('data-customer-key');
+        sessionStorage.setItem('keyCustomer', $(this).find('a[data-customer-key]').attr('data-customer-key'));
     });
 });
