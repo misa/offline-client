@@ -31,7 +31,16 @@ $(document).ready(function() {
         return '\index.html';
     });
 
-    $('.btn-customer-delete').on('click', function (event) {
+    $('.btn-customer-delete').on('click', function(event) {
         silesnet.customers.delCustomer(getQueryStringParams('key'));
+    });
+
+    /**
+     * Passing customer id to next page
+     */
+    $(document).on('click', '.customer-list tr', function(event) {
+
+        // Save customer key to session storage
+        sessionStorage.keyCustomer = $(this).find('a[data-customer-key]').attr('data-customer-key');
     });
 });

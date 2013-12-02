@@ -92,7 +92,13 @@ silesnet.indexedDB.open = function() {
 
         // Init customer detail
         if ($('.customer-detail').length == 1) {
-            silesnet.customers.getDetailCustomer(getQueryStringParams('key'));
+            silesnet.customers.getDetailCustomer(sessionStorage.keyCustomer);
+
+            // Set customer ID to 'data' attribute
+            $('#name').attr('data-customer-key', sessionStorage.keyCustomer);
+
+            // Clean up
+            sessionStorage.removeItem('keyCustomer');
         }
     };
 
@@ -363,7 +369,7 @@ silesnet.customers = {
                 return;
 
             // Append row to table
-            $('.customer-list').append("<tr><td class='number'>" + i++ + "</td><td><a href='/customer/detail.html?key=" + result.value.key + "'>" + result.value.name + "</a></td></tr>");
+            $('.customer-list').append("<tr><td class='number'>" + i++ + "</td><td><a href='/customer/detail.html' data-customer-key='" + result.value.key + "'>" + result.value.name + "</a></td></tr>");
 
             result.continue();
         };
@@ -422,24 +428,4 @@ silesnet.customers = {
         // Delete customer
         store.delete(parseInt(key));
     }
- };
-
-/**
- * Get URL query parameter value
- *
- * @param string sParam Patameter name
- * @returns string
- */
-function getQueryStringParams(sParam)
-{
-    var sPageURL = window.location.search.substring(1);
-    var sURLVariables = sPageURL.split('&');
-    for (var i = 0; i < sURLVariables.length; i++)
-    {
-        var sParameterName = sURLVariables[i].split('=');
-        if (sParameterName[0] == sParam)
-        {
-            return sParameterName[1];
-        }
-    }
-}
+};
