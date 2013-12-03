@@ -30,8 +30,8 @@
                                 <div class="col-xs-6"><label for="supplementary_name">Firm name</label></div>
                             </div>
                             <div class="row">
-                                <div class="col-xs-6"><input type="text" name="name" class="form-control col-md-5" id="name" required="required" placeholder="Full name"></div>
-                                <div class="col-xs-6"><input type="text" name="supplementary_name" class="form-control col-md-5" id="supplementary_name" placeholder="Firm name"></div>
+                                <div class="col-xs-6"><input type="text" name="name" class="form-control col-md-5" id="name" required="required" maxlength="80" placeholder="Full name"></div>
+                                <div class="col-xs-6"><input type="text" name="supplementary_name" class="form-control col-md-5" id="supplementary_name" maxlength="50" placeholder="Firm name"></div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -40,8 +40,8 @@
                                 <div class="col-xs-6"><label for="dic">DIC</label></div>
                             </div>
                             <div class="row">
-                                <div class="col-xs-6"><input type="text" name="public_id" class="form-control col-md-5" id="public_id" required="required" placeholder="Public ID"></div>
-                                <div class="col-xs-6"><input type="text" name="dic" class="form-control col-md-5" id="dic" placeholder="DIC"></div>
+                                <div class="col-xs-6"><input type="text" name="public_id" class="form-control col-md-5" id="public_id" required="required" maxlength="20" placeholder="Public ID"></div>
+                                <div class="col-xs-6"><input type="text" name="dic" class="form-control col-md-5" id="dic" maxlength="20" placeholder="DIC"></div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -51,12 +51,12 @@
                             </div>
                             <div class="row">
                                 <div class="col-xs-4"><input type="number" name="contract_no" class="form-control col-md-5" id="contract_no" placeholder="Contract" /></div>
-                                <div class="col-xs-8"><input type="email" name="email" class="form-control" id="email" required="required" placeholder="E-mail" /></div>
+                                <div class="col-xs-8"><input type="email" name="email" class="form-control" id="email" required="required" maxlength="50" placeholder="E-mail" /></div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="street">Street</label>
-                            <input type="text" name="street" class="form-control" id="street" required="required" placeholder="Street">
+                            <input type="text" name="street" class="form-control" id="street" required="required" maxlength="40" placeholder="Street">
                         </div>
                         <div class="form-group">
                             <div class="row">
@@ -64,8 +64,8 @@
                                 <div class="col-xs-5"><label for="postal_code">Postal code</label></div>
                             </div>
                             <div class="row">
-                                <div class="col-xs-7"><input type="text" name="city" class="form-control col-md-5" id="city" required="required" placeholder="City"></div>
-                                <div class="col-xs-5"><input type="number" name="postal_code" class="form-control col-md-5" id="postal_code" required="required" placeholder="Postal code"></div>
+                                <div class="col-xs-7"><input type="text" name="city" class="form-control col-md-5" id="city" required="required" maxlength="40" placeholder="City"></div>
+                                <div class="col-xs-5"><input type="number" name="postal_code" class="form-control col-md-5" id="postal_code" required="required" max="9999999999" placeholder="Postal code"></div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -81,13 +81,13 @@
                                 <div class="col-xs-6"><label for="phone">Phone</label></div>
                             </div>
                             <div class="row">
-                                <div class="col-xs-6"><input type="text" name="contact_name" class="form-control col-md-5" id="contact_name" placeholder="Contact name"></div>
-                                <div class="col-xs-6"><input type="text" name="phone" class="form-control col-md-5" id="phone" placeholder="Phone"></div>
+                                <div class="col-xs-6"><input type="text" name="contact_name" class="form-control col-md-5" id="contact_name" maxlength="50" placeholder="Contact name"></div>
+                                <div class="col-xs-6"><input type="text" name="phone" class="form-control col-md-5" id="phone" maxlength="70" placeholder="Phone"></div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="info">Info</label>
-                            <textarea name="info" id="info" class="form-control" placeholder="Aditional informations"></textarea>
+                            <textarea name="info" id="info" class="form-control" maxlength="150" placeholder="Aditional informations"></textarea>
                         </div>
 
                         <h3>Services</h3>
