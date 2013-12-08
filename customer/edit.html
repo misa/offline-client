@@ -23,17 +23,15 @@
             <div class="starter-template">
                 <h1>New customer</h1>
 
-                <div class="row">
-
-                    <form role="form" class="col-xs-12 col-sm-8 col-md-5 col-lg-5">
+                    <form action="/index.html" role="form" class="col-xs-12 col-sm-8 col-md-5 col-lg-5 customer-edit" id="customer">
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-xs-6"><label for="name">Customer name</label></div>
                                 <div class="col-xs-6"><label for="supplementary_name">Firm name</label></div>
                             </div>
                             <div class="row">
-                                <div class="col-xs-6"><input type="text" name="name" class="form-control col-md-5" id="name" required="required" placeholder="Full name"></div>
-                                <div class="col-xs-6"><input type="text" name="supplementary_name" class="form-control col-md-5" id="supplementary_name" placeholder="Firm name"></div>
+                                <div class="col-xs-6"><input type="text" name="name" class="form-control col-md-5" id="name" required="required" maxlength="80" placeholder="Full name"></div>
+                                <div class="col-xs-6"><input type="text" name="supplementary_name" class="form-control col-md-5" id="supplementary_name" maxlength="50" placeholder="Firm name"></div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -42,17 +40,23 @@
                                 <div class="col-xs-6"><label for="dic">DIC</label></div>
                             </div>
                             <div class="row">
-                                <div class="col-xs-6"><input type="text" name="public_id" class="form-control col-md-5" id="public_id" required="required" placeholder="Public ID"></div>
-                                <div class="col-xs-6"><input type="text" name="dic" class="form-control col-md-5" id="dic" placeholder="DIC"></div>
+                                <div class="col-xs-6"><input type="text" name="public_id" class="form-control col-md-5" id="public_id" required="required" maxlength="20" placeholder="Public ID"></div>
+                                <div class="col-xs-6"><input type="text" name="dic" class="form-control col-md-5" id="dic" maxlength="20" placeholder="DIC"></div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="email">E-mail</label>
-                            <input type="email" name="email" class="form-control" id="email" required="required" placeholder="E-mail">
+                            <div class="row">
+                                <div class="col-xs-4"><label for="contract_no">Contract ID</label></div>
+                                <div class="col-xs-8"><label for="email">E-mail</label></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-4"><input type="number" name="contract_no" class="form-control col-md-5" id="contract_no" placeholder="Contract" /></div>
+                                <div class="col-xs-8"><input type="email" name="email" class="form-control" id="email" required="required" maxlength="50" placeholder="E-mail" /></div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="street">Street</label>
-                            <input type="text" name="street" class="form-control" id="street" required="required" placeholder="Street">
+                            <input type="text" name="street" class="form-control" id="street" required="required" maxlength="40" placeholder="Street">
                         </div>
                         <div class="form-group">
                             <div class="row">
@@ -60,15 +64,15 @@
                                 <div class="col-xs-5"><label for="postal_code">Postal code</label></div>
                             </div>
                             <div class="row">
-                                <div class="col-xs-7"><input type="text" name="city" class="form-control col-md-5" id="city" required="required" placeholder="City"></div>
-                                <div class="col-xs-5"><input type="number" name="postal_code" class="form-control col-md-5" id="postal_code" required="required" placeholder="Postal code"></div>
+                                <div class="col-xs-7"><input type="text" name="city" class="form-control col-md-5" id="city" required="required" maxlength="40" placeholder="City"></div>
+                                <div class="col-xs-5"><input type="number" name="postal_code" class="form-control col-md-5" id="postal_code" required="required" max="9999999999" placeholder="Postal code"></div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="country">Country</label>
                             <select name="country" class="form-control" id="country">
-                                <option>Czech republic</option>
-                                <option>Poland</option>
+                                <option value="1">Czech republic</option>
+                                <option value="2">Poland</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -77,46 +81,30 @@
                                 <div class="col-xs-6"><label for="phone">Phone</label></div>
                             </div>
                             <div class="row">
-                                <div class="col-xs-6"><input type="text" name="contact_name" class="form-control col-md-5" id="contact_name" placeholder="Contact name"></div>
-                                <div class="col-xs-6"><input type="text" name="phone" class="form-control col-md-5" id="phone" placeholder="Phone"></div>
+                                <div class="col-xs-6"><input type="text" name="contact_name" class="form-control col-md-5" id="contact_name" maxlength="50" placeholder="Contact name"></div>
+                                <div class="col-xs-6"><input type="text" name="phone" class="form-control col-md-5" id="phone" maxlength="70" placeholder="Phone"></div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="info">Info</label>
-                            <textarea name="info" id="info" class="form-control" placeholder="Aditional informations"></textarea>
+                            <textarea name="info" id="info" class="form-control" maxlength="150" placeholder="Aditional informations"></textarea>
                         </div>
 
                         <h3>Services</h3>
                         <div class="form-group" style="padding-bottom: 15px;">
                             <div class="row">
                                 <div class="col-xs-7" style="margin-bottom: 15px;">
-                                    <select name="service_location" class="form-control" id="service_id">
-                                        <option>17listopadu1209</option>
-                                        <option>28rijna42</option>
-                                        <option>akatova12</option>
-                                        <option>akatova13</option>
-                                        <option>albrechtice</option>
-                                        <option>alejmiru801</option>
-                                        <option>alejmiru806</option>
-                                        <option>andziolowka</option>
-                                        <option>antonicek</option>
-                                        <option>auxova</option>
-                                        <option>bachrata</option>
-                                        <option>balicky</option>
-                                        <option>balzacova1192</option>
-                                        <option>barabosz-ap2</option>
+                                    <select name="region" class="form-control" id="region">
                                     </select>
                                 </div>
                                 <div class="col-xs-5">
-                                    <input type="number" name="service_contract" class="form-control col-md-1" id="service_contract" placeholder="Contract">
+                                    <input type="date" name="period_from" class="form-control col-md-1" id="period_from" />
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-xs-9">
-                                    <select name="service_type" class="form-control" id="service_type">
-                                        <option>WIRELESSmax (10 / 5) 360 Kč</option>
-                                        <option>WIRELESSmax (20 / 10) 410 Kč</option>
+                                    <select name="product" class="form-control" id="product">
                                     </select>
                                 </div>
                                 <div class="col-xs-3">
@@ -125,18 +113,17 @@
                             </div>
                         </div>
                         <div class="form-group" style="padding-bottom: 15px;">
-                            <a href="#" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span> service</a>
+                            <a href="#" class=" btn-save-customer btn btn-info"><span class="glyphicon glyphicon-plus"></span> service</a>
                         </div>
 
-                        <button type="submit" class="btn btn-lg btn-success pull-right">Save</button>
+                        <input type="submit" class="btn-save-customer btn btn-lg btn-success pull-right" value="Save" />
                     </form>
                 </div>
-            </div>
-
         </div>
 
         <script src="/media/js/jquery.min.js"></script>
         <script src="/media/js/bootstrap.min.js"></script>
+        <script src="/media/js/db.js"></script>
         <script src="/media/js/script.js"></script>
     </body>
 </html>
