@@ -8,6 +8,9 @@ $(document).ready(function() {
 
     $("form#customer").on("submit", function(event) {
 
+        // Prevent form submit
+        event.preventDefault();
+
         // Input/select list
         var items = ["name", "supplementary_name", "public_id", "dic", "contract_no", "email", "street", "city", "postal_code", "country", "contact_name", "phone", "info", "region", "period_from", "product"];
 
@@ -33,7 +36,7 @@ $(document).ready(function() {
             silesnet.customers.delCustomer($('[data-customer-key]').attr('data-customer-key'));
         }
 
-        return '\index.html';
+        window.location = "../index.html";
     });
 
     $('.btn-customer-delete').on('click', function(event) {
