@@ -99,6 +99,12 @@ silesnet.indexedDB.open = function() {
 
                 // Init saved customer values
                 silesnet.customers.initCustomerForm(sessionStorage.getItem('keyCustomer'));
+            } else {
+                var d = new Date;
+                var dformat = [d.getFullYear(), silesnet.tools.strpad(d.getMonth()+1, 2, '0'), silesnet.tools.strpad(d.getDate(), 2, '0')].join('-');
+
+                // Set default date
+                $('#period_from').val(dformat);
             }
         }
 
@@ -472,4 +478,12 @@ silesnet.customers = {
         // Delete customer
         store.delete(parseInt(key));
     }
+};
+
+// String pad
+silesnet.tools = {};
+silesnet.tools.strpad = function(inputString, chars, padSting) {
+    result = padSting + inputString;
+    remFromLeft = result.length - chars;
+    return result.substr(remFromLeft);
 };
