@@ -28,19 +28,18 @@ $(document).ready(function() {
             }
         });
 
+        // Customer key, if exists
+        var key = $('[data-customer-key]').attr('data-customer-key');
+
         // Add a customer
-        silesnet.customers.addCustomer(data);
-
-        // Delete old customer if exists
-        if ($('[data-customer-key]').attr('data-customer-key') != null) {
-            silesnet.customers.delCustomer($('[data-customer-key]').attr('data-customer-key'));
-        }
-
-        window.location = "../index.html";
+        silesnet.customers.addCustomer(data, key);
     });
 
     $('.btn-customer-delete').on('click', function(event) {
         silesnet.customers.delCustomer($('[data-customer-key]').attr('data-customer-key'));
+
+        // Prevent default action
+        event.preventDefault();
     });
 
     $('.btn-customer-edit').on('click', function(event) {

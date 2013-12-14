@@ -6,8 +6,8 @@ var silesnet = {};
 silesnet.config = {
     db_version : 1,
     db_name : "silesnet",
-    url_regions : "/data/regions.json",
-    url_products : "/data/products.json",
+    url_regions : "../data/regions.json",
+    url_products : "../data/products.json",
     time_cache_regions : 86400,
     time_cache_products : 86400
 };
@@ -332,7 +332,7 @@ silesnet.customers = {
     /**
      * Save a new customer to database
      */
-    addCustomer : function(data) {
+    addCustomer : function(data, key) {
 
         // Init database
         var db = silesnet.indexedDB.db;
@@ -361,6 +361,13 @@ silesnet.customers = {
         });
 
         request.onsuccess = function(e) {
+
+            // If there is an old customer record, delete it
+            if (key != null) {
+                silesnet.customers.delCustomer(key);
+            } else {
+                window.location = "../index.html";
+            }
         };
 
         request.onerror = function(e) {
@@ -387,7 +394,7 @@ silesnet.customers = {
                 return;
 
             // Append row to table
-            $('.customer-list').append("<tr><td class='number'>" + i++ + "</td><td><a href='/customer/detail.html' data-customer-key='" + result.value.key + "'>" + result.value.name + "</a></td></tr>");
+            $('.customer-list').append("<tr><td class='number'>" + i++ + "</td><td><a href='./customer/detail.html' data-customer-key='" + result.value.key + "'>" + result.value.name + "</a></td></tr>");
 
             result.continue();
         };
@@ -476,7 +483,11 @@ silesnet.customers = {
         var store = trans.objectStore("customers");
 
         // Delete customer
-        store.delete(parseInt(key));
+        var request = store.delete(parseInt(key));
+
+        request.onsuccess = function(e) {
+            window.location = "../index.html";
+        };
     }
 };
 
