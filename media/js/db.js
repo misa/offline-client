@@ -222,9 +222,27 @@ var regions = {
             selectRegion.appendChild(selectOption);
 
             result.continue();
+
+            $('#region option[value=' + silesnet.region_id +']').prop('selected', true);
         };
 
         cursorRequest.onerror = silesnet.indexedDB.onerror;
+    },
+    getRegion: function (id) {
+
+        // Init database
+        var db = silesnet.indexedDB.db;
+        var trans = db.transaction(["regions"], "readwrite");
+        var store = trans.objectStore("regions");
+
+        // Get customer details
+        var requestCust = store.get(parseInt(id));
+
+        requestCust.onsuccess = function(e) {
+            var result = e.target.result;
+
+            $('#region').html(result.name);
+        };
     }
 };
 
@@ -319,9 +337,28 @@ var products = {
             selectProduct.appendChild(selectOption);
 
             result.continue();
+
+            $('#product option[value=' + silesnet.product_id +']').prop('selected', true);
         };
 
         cursorRequest.onerror = silesnet.indexedDB.onerror;
+    }
+    ,
+    getProduct: function (id) {
+
+        // Init database
+        var db = silesnet.indexedDB.db;
+        var trans = db.transaction(["products"], "readwrite");
+        var store = trans.objectStore("products");
+
+        // Get customer details
+        var request = store.get(parseInt(id));
+
+        request.onsuccess = function(e) {
+            var result = e.target.result;
+
+            $('#product').html(result.name + ' (' + result.download + ' / ' + result.upload + ') ' + result.price + ' Kč');
+        };
     }
 };
 
@@ -394,7 +431,7 @@ silesnet.customers = {
                 return;
 
             // Append row to table
-            $('.customer-list').append("<tr><td class='number'>" + i++ + "</td><td><a href='./customer/detail.html' data-customer-key='" + result.value.key + "'>" + result.value.name + "</a></td></tr>");
+            $('.customer-list').append("<tr><td class='number'>" + i++ + "</td><td class='name'><a href='./customer/detail.html' data-customer-key='" + result.value.key + "'>" + result.value.name + "</a></td></tr>");
 
             result.continue();
         };
@@ -407,6 +444,11 @@ silesnet.customers = {
         var db = silesnet.indexedDB.db;
         var trans = db.transaction(["customers"], "readwrite");
         var store = trans.objectStore("customers");
+
+        if (key == null) {
+            window.location = "../index.html";
+            return;
+        }
 
         // Get customer details
         var requestCust = store.get(parseInt(key));
@@ -439,6 +481,9 @@ silesnet.customers = {
             $('#contact_name').html(result.contact_name);
             $('#phone').html(result.phone);
             $('#info').html(result.info);
+            $('#period_from').html(result.period_from);
+            regions.getRegion(result.region);
+            products.getProduct(result.product);
         };
 
         requestCust.onerror = silesnet.indexedDB.onerror;
@@ -471,6 +516,10 @@ silesnet.customers = {
             $('#contact_name').val(result.contact_name);
             $('#phone').val(result.phone);
             $('#info').val(result.info);
+
+            $('#period_from').val(result.period_from);
+            silesnet.region_id = result.region;
+            silesnet.product_id = result.product;
         };
 
         requestCust.onerror = silesnet.indexedDB.onerror;

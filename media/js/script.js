@@ -19,7 +19,10 @@ $(document).ready(function() {
         // Collect data
         items.forEach(function(entry) {
 
-            if ($.inArray(entry, ["country", "region", "product"]) > -1) {
+            if ($.inArray(entry, ["period_from"]) > -1) {
+
+                data[entry] = $('#period_from').val();
+            } else if ($.inArray(entry, ["country", "region", "product"]) > -1) {
 
                 data[entry] = $('#' + entry + ' option:selected').attr('value');
             } else {
