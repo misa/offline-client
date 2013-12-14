@@ -8,6 +8,7 @@ silesnet.config = {
     db_name : "silesnet",
     url_regions : "../data/regions.json",
     url_products : "../data/products.json",
+    url_send_customer : "todo",
     time_cache_regions : 86400,
     time_cache_products : 86400
 };
@@ -484,6 +485,67 @@ silesnet.customers = {
             $('#period_from').html(result.period_from);
             regions.getRegion(result.region);
             products.getProduct(result.product);
+        };
+
+        requestCust.onerror = silesnet.indexedDB.onerror;
+    },
+    sendCustomer: function(key) {
+
+        // Init database
+        var db = silesnet.indexedDB.db;
+        var trans = db.transaction(["customers"], "readwrite");
+        var store = trans.objectStore("customers");
+
+        if (key == null) {
+            window.location = "../index.html";
+            return;
+        }
+
+        // Get customer details
+        var requestCust = store.get(parseInt(key));
+
+        requestCust.onsuccess = function(e) {
+
+            var result = e.target.result;
+
+            var data = {};
+            var customer = {};
+
+            // Set values on page
+            customer.key = key;
+            customer.name = result.name;
+            customer.supplementary_name = result.supplementary_name;
+            customer.public_id = result.public_id;
+            customer.dic = result.dic;
+            customer.contract_no = result.contract_no;
+            customer.email = result.email;
+            customer.street = result.street;
+            customer.city = result.city;
+            customer.postal_code = parseInt(result.postal_code);
+            customer.country = parseInt(result.country);
+            customer.contact_name = result.contact_name;
+            customer.phone = result.phone;
+            customer.info = result.info;
+            customer.period_from = result.period_from;
+            customer.region = parseInt(result.region);
+            customer.product = parseInt(result.product);
+
+            data.customers = [customer];
+
+            // Send customer data to server
+            $.ajax({
+                type: "POST",
+                url: silesnet.config.url_send_customer,
+                data: data,
+                success: function(data) {
+
+                    // Delete customer from IndexedDb
+                    silesnet.customers.delCustomer(data.key);
+                },
+                dataType: "json"
+            }).fail(function() {
+                alert("Can not send data!");
+            });
         };
 
         requestCust.onerror = silesnet.indexedDB.onerror;

@@ -38,6 +38,7 @@ $(document).ready(function() {
         silesnet.customers.addCustomer(data, key);
     });
 
+    // Delete customer record
     $('.btn-customer-delete').on('click', function(event) {
         silesnet.customers.delCustomer($('[data-customer-key]').attr('data-customer-key'));
 
@@ -45,9 +46,18 @@ $(document).ready(function() {
         event.preventDefault();
     });
 
+    // Edit customer record
     $('.btn-customer-edit').on('click', function(event) {
         // Save customer key to session storage
         sessionStorage.setItem('keyCustomer', $('[data-customer-key]').attr('data-customer-key'));
+    });
+
+    // Send customer data to server
+    $('.btn-customer-send').on('click', function(event) {
+        // Prevent default action
+        event.preventDefault();
+
+        silesnet.customers.sendCustomer($('[data-customer-key]').attr('data-customer-key'));
     });
 
     /**
