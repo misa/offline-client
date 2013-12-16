@@ -8,6 +8,9 @@ $(document).ready(function() {
 
     $("form#customer").on("submit", function(event) {
 
+        // Prevent form submit
+        event.preventDefault();
+
         // Input/select list
         var items = ["name", "supplementary_name", "public_id", "dic", "contract_no", "email", "street", "city", "postal_code", "country", "contact_name", "phone", "info", "region", "period_from", "product"];
 
@@ -16,7 +19,10 @@ $(document).ready(function() {
         // Collect data
         items.forEach(function(entry) {
 
-            if ($.inArray(entry, ["country", "region", "product"]) > -1) {
+            if ($.inArray(entry, ["period_from"]) > -1) {
+
+                data[entry] = $('#period_from').val();
+            } else if ($.inArray(entry, ["country", "region", "product"]) > -1) {
 
                 data[entry] = $('#' + entry + ' option:selected').attr('value');
             } else {
@@ -25,24 +31,33 @@ $(document).ready(function() {
             }
         });
 
+        // Customer key, if exists
+        var key = $('[data-customer-key]').attr('data-customer-key');
+
         // Add a customer
-        silesnet.customers.addCustomer(data);
-
-        // Delete old customer if exists
-        if ($('[data-customer-key]').attr('data-customer-key') != null) {
-            silesnet.customers.delCustomer($('[data-customer-key]').attr('data-customer-key'));
-        }
-
-        return '\index.html';
+        silesnet.customers.addCustomer(data, key);
     });
 
+    // Delete customer record
     $('.btn-customer-delete').on('click', function(event) {
         silesnet.customers.delCustomer($('[data-customer-key]').attr('data-customer-key'));
+
+        // Prevent default action
+        event.preventDefault();
     });
 
+    // Edit customer record
     $('.btn-customer-edit').on('click', function(event) {
         // Save customer key to session storage
         sessionStorage.setItem('keyCustomer', $('[data-customer-key]').attr('data-customer-key'));
+    });
+
+    // Send customer data to server
+    $('.btn-customer-send').on('click', function(event) {
+        // Prevent default action
+        event.preventDefault();
+
+        silesnet.customers.sendCustomer($('[data-customer-key]').attr('data-customer-key'));
     });
 
     /**

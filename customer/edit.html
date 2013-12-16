@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html manifest="/silesnet.manifest">
+<html manifest="../silesnet.manifest">
     <head>
         <title>Customer edit - Silesnet</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <meta name="HandheldFriendly" content="true" />
-        <link href="/media/css/bootstrap.min.css" rel="stylesheet">
-        <link href="/media/css/display.css" rel="stylesheet">
+        <link href="../media/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../media/css/display.css" rel="stylesheet">
     </head>
     <body>
 
         <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="/index.html">Silesnet</a>
+                    <a class="navbar-brand" href="../index.html">Silesnet</a>
                 </div>
             </div>
         </div>
@@ -23,7 +23,7 @@
             <div class="starter-template">
                 <h1>New customer</h1>
 
-                    <form action="/index.html" role="form" class="col-xs-12 col-sm-8 col-md-5 col-lg-5 customer-edit" id="customer">
+                    <form action="../index.html" role="form" class="col-xs-12 col-sm-8 col-md-5 col-lg-5 customer-edit" id="customer">
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-xs-6"><label for="name">Customer name</label></div>
@@ -91,39 +91,34 @@
                         </div>
 
                         <h3>Services</h3>
-                        <div class="form-group" style="padding-bottom: 15px;">
+                        <div class="service-box form-group">
                             <div class="row">
                                 <div class="col-xs-7" style="margin-bottom: 15px;">
                                     <select name="region" class="form-control" id="region">
                                     </select>
                                 </div>
                                 <div class="col-xs-5">
-                                    <input type="date" name="period_from" class="form-control col-md-1" id="period_from" />
+                                    <input type="date" name="period_from" id="period_from" class="form-control col-md-1">
                                 </div>
                             </div>
 
                             <div class="row">
-                                <div class="col-xs-9">
+                                <div class="col-xs-12">
                                     <select name="product" class="form-control" id="product">
                                     </select>
                                 </div>
-                                <div class="col-xs-3">
-                                    <a href="#" class="btn btn-warning pull-right"><span class="glyphicon glyphicon-remove"></span></a>
-                                </div>
                             </div>
-                        </div>
-                        <div class="form-group" style="padding-bottom: 15px;">
-                            <a href="#" class=" btn-save-customer btn btn-info"><span class="glyphicon glyphicon-plus"></span> service</a>
+                            <hr />
                         </div>
 
-                        <input type="submit" class="btn-save-customer btn btn-lg btn-success pull-right" value="Save" />
+                        <input type="submit" class="btn-save-customer btn btn-lg btn-success pull-right" value="Save">
                     </form>
                 </div>
         </div>
 
-        <script src="/media/js/jquery.min.js"></script>
-        <script src="/media/js/bootstrap.min.js"></script>
-        <script src="/media/js/db.js"></script>
-        <script src="/media/js/script.js"></script>
+        <script src="../media/js/jquery.min.js"></script>
+        <script src="../media/js/bootstrap.min.js"></script>
+        <script src="../media/js/db.js"></script>
+        <script src="../media/js/script.js"></script>
     </body>
 </html>
