@@ -17,7 +17,7 @@ silesnet.indexedDB = {};
 
 silesnet.indexedDB.db = null;
 /**
- * Open/init Silesnet indexDB database
+ * Open/init SilesNet indexDB database
  */
 silesnet.indexedDB.open = function() {
 
